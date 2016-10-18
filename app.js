@@ -136,6 +136,7 @@ socket.on('disconnect',function(data){
               else if(result){console.log(result);
               io.sockets.emit('available',result);}
             });
+            io.sockets.in(id).emit('reset',id);
       }
     }
   );
