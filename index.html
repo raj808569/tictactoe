@@ -95,7 +95,7 @@
 								$users.html(html1);
 							});
 							socket.on('firstmove',function(data){
-								bootbox.alert(data[0]+" will make the first move",function(err,result){
+								bootbox.alert(data[1]+" will make the first move",function(err,result){
 									if (err) throw err;
 								});
 							});
