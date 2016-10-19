@@ -92,7 +92,7 @@ socket.on('join',function(data){
         }
         else if(result)
         io.sockets.in(id).emit('joined',result);
-        io.sockets.in(socket.id).emit('firstmove',result.list);
+        io.sockets.in(id).emit('firstmove',result.list);
         });
   });
 });
