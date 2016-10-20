@@ -106,15 +106,16 @@
 										document.getElementById("spot1").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot1",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
 
-									});
+							});
+							socket.on('checked',function(data){
+								if(data.counter==0)
+								{document.getElementById(data.area).innerHTML="X";}
+								else {
+									document.getElementById(data.area).innerHTML="O";
+								}
+								counter=data.counter;
+
 							});
 							$spot2.click(function(){
 									if(counter==0)
@@ -123,16 +124,7 @@
 										document.getElementById("spot2").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot2",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
-
 									});
-							});
 							$spot3.click(function(){
 									if(counter==0)
 									{document.getElementById("spot3").innerHTML ="O";counter=counter+1;}
@@ -140,15 +132,7 @@
 										document.getElementById("spot3").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot3",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
 
-									});
 							});
 							$spot4.click(function(){
 									if(counter==0)
@@ -157,15 +141,7 @@
 										document.getElementById("spot4").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot4",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
 
-									});
 							});
 							$spot5.click(function(){
 									if(counter==0)
@@ -174,15 +150,7 @@
 										document.getElementById("spot5").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot5",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
 
-									});
 							});
 							$spot6.click(function(){
 									if(counter==0)
@@ -191,15 +159,7 @@
 										document.getElementById("spot6").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot6",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
 
-									});
 							});
 							$spot7.click(function(){
 									if(counter==0)
@@ -208,16 +168,7 @@
 										document.getElementById("spot7").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot7",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
-
-									});
-							});
+																});
 							$spot8.click(function(){
 									if(counter==0)
 									{document.getElementById("spot8").innerHTML ="O";counter=counter+1;}
@@ -225,16 +176,7 @@
 										document.getElementById("spot8").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot8",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
-
-									});
-							});
+																});
 							$spot9.click(function(){
 									if(counter==0)
 									{document.getElementById("spot9").innerHTML ="O";counter=counter+1;}
@@ -242,15 +184,7 @@
 										document.getElementById("spot9").innerHTML = "X";counter=counter-1;
 									}
 									socket.emit('check',{area:"spot9",counter:counter});
-									socket.on('checked',function(data){
-										if(data.counter==0)
-										{document.getElementById(data.area).innerHTML="X";}
-										else {
-											document.getElementById(data.area).innerHTML="O";
-										}
-										counter=data.counter;
-
-									});
+									
 							});
 							socket.on('reset',function(data){
 								$spot1.empty();$spot2.empty();$spot3.empty();$spot4.empty();$spot5.empty();$spot6.empty();$spot7.empty();$spot8.empty();$spot9.empty();
