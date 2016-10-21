@@ -146,7 +146,6 @@ socket.on('check',function(data){ console.log(data);
   io.sockets.in(id).emit('checked',data);
 });
 socket.on('draw',function(data){
-  data=data+1;data=data%2;
   io.sockets.in(id).emit('newgame1',data);
 });
 socket.on('namelist',function(data){
