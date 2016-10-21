@@ -20,7 +20,7 @@
 	<script>
 	$(function(){
 	var socket = io.connect();
-	var $button1 = $('#button1');var counter=0;var moves=0;var gamecount=1;var rose=1;
+	var $button1 = $('#button1');var counter=0;var moves=0;var gamecount=1;var playersname;
 	var $button2 = $('#button2');
 	var $available=$('#available');
 	var $reset=$('#reset');
@@ -134,20 +134,22 @@
 				if (err) throw err;
 			});
 		});
+			socket.emit('namelist',gamecount);
 	}
 	});
 	socket.on('newgame1',function(data){
-	gamecount=data;moves=0;counter=0;
+	moves=0;counter=0;
 	});
 	$reset.click(function(e){
 	e.preventDefault();
 	$spot1.empty();$spot2.empty();$spot3.empty();$spot4.empty();$spot5.empty();$spot6.empty();$spot7.empty();$spot8.empty();$spot9.empty();
-	socket.emit('namelist',gamecount);
-	});
-	socket.on('gotnamelist',function(data){
-	bootbox.alert(data.list[gamecount]+" will make first move",function(err,result){
+	gamecount=gamecount+1;gamecount=gamecount%2;
+	bootbox.alert(playersname[gamecount]+" will make first move",function(err,result){
 		if (err) throw err;
 	});
+	});
+	socket.on('gotnamelist',function(data){
+		playersname=data.list;
 	});
 	$spot2.click(function(){
 		if(counter==0)
