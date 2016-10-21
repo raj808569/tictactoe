@@ -11,7 +11,7 @@ var Tic = mongoose.model('Tic',todoSchema);
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var id;var creator;var joiner;users={};
-app.set('port',(process.env.PORT||3000));
+app.set('port',(process.env.PORT||8080));
 app.get('/',function(req,res){
   res.sendFile(__dirname + '/index.html');
 });
@@ -144,5 +144,19 @@ socket.on('disconnect',function(data){
 });
 socket.on('check',function(data){ console.log(data);
   io.sockets.in(id).emit('checked',data);
+});
+socket.on('draw',function(data){
+  data=data+1;data=data%2;
+  io.sockets.in(id).emit('newgame1',data);
+});
+socket.on('namelist',function(data){
+  Tic.findOne({id:id},function(err,result){
+      if(err)
+      {
+        throw err;
+      }
+      else if(result)
+      io.sockets.in(id).emit('gotnamelist',result);
+    });
 });
 });
