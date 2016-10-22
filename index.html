@@ -119,7 +119,7 @@
 	if(($spot1.text()=="X"&&$spot2.text()=="X"&&$spot3.text()=="X")||($spot4.text()=="X"&&$spot5.text()=="X"&&$spot6.text()=="X")||($spot7.text()=="X"&&$spot8.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot4.text()=="X"&&$spot7.text()=="X")
 	||($spot2.text()=="X"&&$spot5.text()=="X"&&$spot8.text()=="X")||($spot3.text()=="X"&&$spot6.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot5.text()=="X"&&$spot9.text()=="X")||($spot3.text()=="X"&&$spot5.text()=="X"&&$spot7.text()=="X"))
 	{
-
+			moves=0;counter=0;
 		bootbox.alert(playersname[(gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
 			if (err) throw err;
 		});
@@ -127,7 +127,7 @@
 	else if(($spot1.text()=="O"&&$spot2.text()=="O"&&$spot3.text()=="O")||($spot4.text()=="O"&&$spot5.text()=="O"&&$spot6.text()=="O")||($spot7.text()=="O"&&$spot8.text()=="O"&&$spot9.text()=="O")||($spot1.text()=="O"&&$spot4.text()=="O"&&$spot7.text()=="O")
 	||($spot2.text()=="O"&&$spot5.text()=="O"&&$spot8.text()=="O")||($spot3.text()=="O"&&$spot6.text()=="O"&&$spot9.text()=="O")||($spot1.text()=="O"&&$spot5.text()=="O"&&$spot9.text()=="O")||($spot3.text()=="O"&&$spot5.text()=="O"&&$spot7.text()=="O"))
 	{
-
+			moves=0;counter=0;
 			bootbox.alert(playersname[gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
 				if (err) throw err;
 			});
