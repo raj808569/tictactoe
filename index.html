@@ -116,16 +116,16 @@
 		document.getElementById(data.area).innerHTML="O";
 	}
 	counter=data.counter;moves=data.moves+1;
-	if(($spot1.innerText=="X"&&$spot2.innerText=="X"&&$spot3.innerText=="X")||($spot4.innerText=="X"&&$spot5.Text=="X"&&$spot6.innerText=="X")||($spot7.innerText=="X"&&$spot8.innerText=="X"&&$spot9.innerText=="X")||($spot1.innerText=="X"&&$spot4.innerText=="X"&&$spot7.innerText=="X")
-	||($spot2.innerText=="X"&&$spot5.innerText=="X"&&$spot8.innerText=="X")||($spot3.innerText=="X"&&$spot6.Text=="X"&&$spot9.innerText=="X")||($spot1.innerText=="X"&&$spot5.innerText=="X"&&$spot9.innerText=="X")||($spot3.innerText=="X"&&$spot5.innerText=="X"&&$spot7.innerText=="X"))
+	if(($spot1.text()=="X"&&$spot2.text()=="X"&&$spot3.text()=="X")||($spot4.text()=="X"&&$spot5.text()=="X"&&$spot6.text()=="X")||($spot7.text()=="X"&&$spot8.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot4.text()=="X"&&$spot7.text()=="X")
+	||($spot2.text()=="X"&&$spot5.text()=="X"&&$spot8.text()=="X")||($spot3.text()=="X"&&$spot6.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot5.text()=="X"&&$spot9.text()=="X")||($spot3.text()=="X"&&$spot5.text()=="X"&&$spot7.text()=="X"))
 	{
 
 		bootbox.alert(playersname[(gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
 			if (err) throw err;
 		});
 	}
-	else if(($spot1.innerText=="O"&&$spot2.innerText=="O"&&$spot3.innerText=="O")||($spot4.innerText=="O"&&$spot5.innerText=="O"&&$spot6.innerText=="O")||($spot7.innerText=="O"&&$spot8.innerText=="O"&&$spot9.innerText=="O")||($spot1.innerText=="O"&&$spot4.innerText=="O"&&$spot7.innerText=="O")
-	||($spot2.innerText=="O"&&$spot5.innerText=="O"&&$spot8.innerText=="O")||($spot3.innerText=="O"&&$spot6.innerText=="O"&&$spot9.innerText=="O")||($spot1.innerText=="O"&&$spot5.innerText=="O"&&$spot9.innerText=="O")||($spot3.innerText=="O"&&$spot5.innerText=="O"&&$spot7.innerText=="O"))
+	else if(($spot1.text()=="O"&&$spot2.text()=="O"&&$spot3.text()=="O")||($spot4.text()=="O"&&$spot5.text()=="O"&&$spot6.text()=="O")||($spot7.text()=="O"&&$spot8.text()=="O"&&$spot9.text()=="O")||($spot1.text()=="O"&&$spot4.text()=="O"&&$spot7.text()=="O")
+	||($spot2.text()=="O"&&$spot5.text()=="O"&&$spot8.text()=="O")||($spot3.text()=="O"&&$spot6.text()=="O"&&$spot9.text()=="O")||($spot1.text()=="O"&&$spot5.text()=="O"&&$spot9.text()=="O")||($spot3.text()=="O"&&$spot5.text()=="O"&&$spot7.text()=="O"))
 	{
 
 			bootbox.alert(playersname[gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
