@@ -84,6 +84,7 @@
 	}
 	html1+=html2;
 	$users.html(html1);
+		socket.emit('namelist',gamecount);
 	});
 	socket.on('display',function(data){
 	var html1='<h4 style="color:white">Game id:  '+data.id+'</h4>';var list=data.list; var html2='';
@@ -115,18 +116,18 @@
 		document.getElementById(data.area).innerHTML="O";
 	}
 	counter=data.counter;moves=data.moves+1;
-	if(($spot1.innerHTML=="X"&&$spot2.innerHTML=="X"&&$spot3.innerHTML=="X")||($spot4.innerHTML=="X"&&$spot5.innerHTML=="X"&&$spot6.innerHTML=="X")||($spot7.innerHTML=="X"&&$spot8.innerHTML=="X"&&$spot9.innerHTML=="X")||($spot1.innerHTML=="X"&&$spot4.innerHTML=="X"&&$spot7.innerHTML=="X")
-	||($spot2.innerHTML=="X"&&$spot5.innerHTML=="X"&&$spot8.innerHTML=="X")||($spot3.innerHTML=="X"&&$spot6.innerHTML=="X"&&$spot9.innerHTML=="X")||($spot1.innerHTML=="X"&&$spot5.innerHTML=="X"&&$spot9.innerHTML=="X")||($spot3.innerHTML=="X"&&$spot5.innerHTML=="X"&&$spot7.innerHTML=="X"))
+	if(($spot1.innerText=="X"&&$spot2.innerText=="X"&&$spot3.innerText=="X")||($spot4.innerText=="X"&&$spot5.Text=="X"&&$spot6.innerText=="X")||($spot7.innerText=="X"&&$spot8.innerText=="X"&&$spot9.innerText=="X")||($spot1.innerText=="X"&&$spot4.innerText=="X"&&$spot7.innerText=="X")
+	||($spot2.innerText=="X"&&$spot5.innerText=="X"&&$spot8.innerText=="X")||($spot3.innerText=="X"&&$spot6.Text=="X"&&$spot9.innerText=="X")||($spot1.innerText=="X"&&$spot5.innerText=="X"&&$spot9.innerText=="X")||($spot3.innerText=="X"&&$spot5.innerText=="X"&&$spot7.innerText=="X"))
 	{
-		socket.emit('namelist',gamecount);
+
 		bootbox.alert(playersname[(gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
 			if (err) throw err;
 		});
 	}
-	else if(($spot1.innerHTML=="O"&&$spot2.innerHTML=="O"&&$spot3.innerHTML=="O")||($spot4.innerHTML=="O"&&$spot5.innerHTML=="O"&&$spot6.innerHTML=="O")||($spot7.innerHTML=="O"&&$spot8.innerHTML=="O"&&$spot9.innerHTML=="O")||($spot1.innerHTML=="O"&&$spot4.innerHTML=="O"&&$spot7.innerHTML=="O")
-	||($spot2.innerHTML=="O"&&$spot5.innerHTML=="O"&&$spot8.innerHTML=="O")||($spot3.innerHTML=="O"&&$spot6.innerHTML=="O"&&$spot9.innerHTML=="O")||($spot1.innerHTML=="O"&&$spot5.innerHTML=="O"&&$spot9.innerHTML=="O")||($spot3.innerHTML=="O"&&$spot5.innerHTML=="O"&&$spot7.innerHTML=="O"))
+	else if(($spot1.innerText=="O"&&$spot2.innerText=="O"&&$spot3.innerText=="O")||($spot4.innerText=="O"&&$spot5.innerText=="O"&&$spot6.innerText=="O")||($spot7.innerText=="O"&&$spot8.innerText=="O"&&$spot9.innerText=="O")||($spot1.innerText=="O"&&$spot4.innerText=="O"&&$spot7.innerText=="O")
+	||($spot2.innerText=="O"&&$spot5.innerText=="O"&&$spot8.innerText=="O")||($spot3.innerText=="O"&&$spot6.innerText=="O"&&$spot9.innerText=="O")||($spot1.innerText=="O"&&$spot5.innerText=="O"&&$spot9.innerText=="O")||($spot3.innerText=="O"&&$spot5.innerText=="O"&&$spot7.innerText=="O"))
 	{
-			socket.emit('namelist',gamecount);
+
 			bootbox.alert(playersname[gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
 				if (err) throw err;
 			});
