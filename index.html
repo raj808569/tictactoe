@@ -125,7 +125,7 @@
 	}
 	else if(($spot1.innerHTML=="O"&&$spot2.innerHTML=="O"&&$spot3.innerHTML=="O")||($spot4.innerHTML=="O"&&$spot5.innerHTML=="O"&&$spot6.innerHTML=="O")||($spot7.innerHTML=="O"&&$spot8.innerHTML=="O"&&$spot9.innerHTML=="O")||($spot1.innerHTML=="O"&&$spot4.innerHTML=="O"&&$spot7.innerHTML=="O")
 	||($spot2.innerHTML=="O"&&$spot5.innerHTML=="O"&&$spot8.innerHTML=="O")||($spot3.innerHTML=="O"&&$spot6.innerHTML=="O"&&$spot9.innerHTML=="O")||($spot1.innerHTML=="O"&&$spot5.innerHTML=="O"&&$spot9.innerHTML=="O")||($spot3.innerHTML=="O"&&$spot5.innerHTML=="O"&&$spot7.innerHTML=="O"))
-	{
+	{alert("working");
 			socket.emit('namelist',gamecount);
 			bootbox.alert(playersname[gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
 				if (err) throw err;
