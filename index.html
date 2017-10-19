@@ -4,291 +4,80 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Tic Tac Toe</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"type="text/javascript">
-	</script>
+	<link rel="stylesheet" href="./css/normalize.css" />
+	<link rel="stylesheet" href="./css/styles.css" />
+	<link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/bootbox/4.4.0/bootbox.min.js"></script>
-	<style>
-
-	#gamearea{
-	display:none;
-	}
-
-	</style>
-	<script>
-	$(function(){
-	var socket = io.connect();
-	var $button1 = $('#button1');var counter=0;var moves=0;var gamecount=1;var playersname;
-	var $button2 = $('#button2');
-	var $available=$('#available');
-	var $reset=$('#reset');
-	var $joinarea=$('#joinarea');
-	var $gamearea=$('#gamearea');
-	var $users=$('#users');
-	var $spot1=$('#spot1');
-	var $spot2=$('#spot2');
-	var $spot3=$('#spot3');
-	var $spot4=$('#spot4');
-	var $spot5=$('#spot5');
-	var $spot6=$('#spot6');
-	var $spot7=$('#spot7');
-	var $spot8=$('#spot8');
-	var $spot9=$('#spot9');
-	$(document).ready(function() {
-	socket.on('available',function(data){
-	var html2='';
-	for(var i=0;i<data.length;i++)
-	{
-	html2+='<li class="list-group-item">Game id:  '+data[i].id+'</li>';
-	}
-	$available.html(html2);
-	});
-	$button1.click(function(e){
-	e.preventDefault();
-	bootbox.prompt("Enter Your name",function(result){
-			socket.emit('create',result);
-	});
-	socket.on('created',function(data){
-		$joinarea.hide();
-		$gamearea.show();
-		var html1='<h4 style="color:white">Game id:  '+data.id+'</h4>';var list=data.list; var html2='';
-		for(i=0;i<list.length;i++)
-		{
-			html2+='<li class="list-group-item">'+list[i]+'</li>';
-		}
-		html1+=html2;
-		$users.html(html1);
-	});
-	});
-	$button2.click(function(e){
-	e.preventDefault();
-	bootbox.prompt("enter the id of game you want to enter:",function(result){
-			socket.emit('join',result);
-			socket.on('player2name',function(data){
-				bootbox.prompt("enter your name:",function(result){
-					if(result)
-					{socket.emit('gamestart',result);}
-				});
-			});
-	});
-	});
-	socket.on('joined',function(data){
-	$joinarea.hide();
-	$gamearea.show();
-	var html1='<h4 style="color:white">Game id:  '+data.id+'</h4>';var list=data.list; var html2='';
-	for(i=0;i<list.length;i++)
-	{
-		html2+='<li class="list-group-item">'+list[i]+'</li>';
-	}
-	html1+=html2;
-	$users.html(html1);
-		socket.emit('namelist',gamecount);
-	});
-	socket.on('display',function(data){
-	var html1='<h4 style="color:white">Game id:  '+data.id+'</h4>';var list=data.list; var html2='';
-	for(i=0;i<list.length;i++)
-	{
-		html2+='<li class="list-group-item">'+list[i]+'</li>';
-	}
-	html1+=html2;
-	$users.html(html1);
-	});
-	socket.on('firstmove',function(data){
-	bootbox.alert(data[1]+" will make the first move",function(err,result){
-		if (err) throw err;
-	});
-	});
-	$spot1.click(function(){
-		if(counter==0)
-		{document.getElementById("spot1").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot1").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot1",counter:counter,moves:moves});
-
-	});
-	socket.on('checked',function(data){
-	if(data.counter==0)
-	{document.getElementById(data.area).innerHTML="X";}
-	else {
-		document.getElementById(data.area).innerHTML="O";
-	}
-	counter=data.counter;moves=data.moves+1;
-	if(($spot1.text()=="X"&&$spot2.text()=="X"&&$spot3.text()=="X")||($spot4.text()=="X"&&$spot5.text()=="X"&&$spot6.text()=="X")||($spot7.text()=="X"&&$spot8.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot4.text()=="X"&&$spot7.text()=="X")
-	||($spot2.text()=="X"&&$spot5.text()=="X"&&$spot8.text()=="X")||($spot3.text()=="X"&&$spot6.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot5.text()=="X"&&$spot9.text()=="X")||($spot3.text()=="X"&&$spot5.text()=="X"&&$spot7.text()=="X"))
-	{
-			moves=0;counter=0;
-		bootbox.alert(playersname[(gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
-			if (err) throw err;
-		});
-	}
-	else if(($spot1.text()=="O"&&$spot2.text()=="O"&&$spot3.text()=="O")||($spot4.text()=="O"&&$spot5.text()=="O"&&$spot6.text()=="O")||($spot7.text()=="O"&&$spot8.text()=="O"&&$spot9.text()=="O")||($spot1.text()=="O"&&$spot4.text()=="O"&&$spot7.text()=="O")
-	||($spot2.text()=="O"&&$spot5.text()=="O"&&$spot8.text()=="O")||($spot3.text()=="O"&&$spot6.text()=="O"&&$spot9.text()=="O")||($spot1.text()=="O"&&$spot5.text()=="O"&&$spot9.text()=="O")||($spot3.text()=="O"&&$spot5.text()=="O"&&$spot7.text()=="O"))
-	{
-			moves=0;counter=0;
-			bootbox.alert(playersname[gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
-				if (err) throw err;
-			});
-	}
-	else if(moves==9)
-	{
-		socket.emit('draw',gamecount);
-		bootbox.alert("the game resulted in draw",function(err,result){
-			if (err) throw err;
-			bootbox.alert("Press Reset to start new game",function(err,result){
-				if (err) throw err;
-			});
-		});
-			socket.emit('namelist',gamecount);
-	}
-	});
-	socket.on('newgame1',function(data){
-	moves=0;counter=0;
-	});
-	$reset.click(function(e){
-	e.preventDefault();
-	$spot1.empty();$spot2.empty();$spot3.empty();$spot4.empty();$spot5.empty();$spot6.empty();$spot7.empty();$spot8.empty();$spot9.empty();
-	gamecount=gamecount+1;gamecount=gamecount%2;
-	bootbox.alert(playersname[gamecount]+" will make first move",function(err,result){
-		if (err) throw err;
-	});
-	});
-	socket.on('gotnamelist',function(data){
-		playersname=data.list;
-	});
-	$spot2.click(function(){
-		if(counter==0)
-		{document.getElementById("spot2").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot2").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot2",counter:counter,moves:moves});
-		});
-	$spot3.click(function(){
-		if(counter==0)
-		{document.getElementById("spot3").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot3").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot3",counter:counter,moves:moves});
-
-	});
-	$spot4.click(function(){
-		if(counter==0)
-		{document.getElementById("spot4").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot4").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot4",counter:counter,moves:moves});
-
-	});
-	$spot5.click(function(){
-		if(counter==0)
-		{document.getElementById("spot5").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot5").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot5",counter:counter,moves:moves});
-
-	});
-	$spot6.click(function(){
-		if(counter==0)
-		{document.getElementById("spot6").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot6").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot6",counter:counter,moves:moves});
-
-	});
-	$spot7.click(function(){
-		if(counter==0)
-		{document.getElementById("spot7").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot7").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot7",counter:counter,moves:moves});
-									});
-	$spot8.click(function(){
-		if(counter==0)
-		{document.getElementById("spot8").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot8").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot8",counter:counter,moves:moves});
-									});
-	$spot9.click(function(){
-		if(counter==0)
-		{document.getElementById("spot9").innerHTML ="O";counter=counter+1;}
-		else {
-			document.getElementById("spot9").innerHTML = "X";counter=counter-1;
-		}
-		socket.emit('check',{area:"spot9",counter:counter,moves:moves});
-
-	});
-	socket.on('reset',function(data){counter=0;moves=0;gamecount=1;
-	$spot1.empty();$spot2.empty();$spot3.empty();$spot4.empty();$spot5.empty();$spot6.empty();$spot7.empty();$spot8.empty();$spot9.empty();
-	});
-	});
-	});
-	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+	<link href="//cdn.bri.io/mbox/dist/mbox-0.0.3.min.css" rel="stylesheet">
+	<script src="//cdn.bri.io/mbox/dist/mbox-0.0.3.min.js"></script>
 	</head>
-	<body style="background-color:lightskyblue">
-	<div class="row" style="margin-bottom:3px">
-	<div class="col-md-3">
-	<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQLf5u5R0UVYYXQFrQqMO0P4Uwx0N4n90Vk8YNOkMUT0fM3kIfKmQ" class="img-responsive img-thumbnail" alt="Responsive image">
+	<body>
+	<div class="row topper">
+		<div class="col-m-4 col-s-6 center">
+			<div class="card deep-orange lighten-2">
+				<font><h3>Tic Tac Toe</h3></font>
+			</div>
+		</div>
 	</div>
-	<div class="col-md-6">
-	<center><h1 style="color:white"><lead>Welcome to Tic Tac Toe</lead><h1></center>
-	</div>
-	</div>
+	<br />
+	<div class="lower container">
+		<div class="row" id="joinarea">
+			<div class="col m3 s6 left card cyan accent-4">
+				<div class="card-content white-text">
+              <span class="card-title"><a class="waves-effect waves-purple btn-large deep-orange darken-1" id="button1">Create new</a></span>
+              <p>Click here to create new game</p>
+        </div>
+			</div>
+			<div class="col m4 s6 right card cyan accent-4">
+				<div class="card-content white-text">
+              <span class="card-title"><a class="waves-effect waves-purple btn-large deep-orange darken-1" id="button2">Join avilable games</a></span>
+							<div id="availablegameinfo">
+								<p style="text-align:center">
+									<strong>Available Games</strong>
+								</p>
+							  <ul class="list-group" id="available"></ul>
+							</div>
+        </div>
+			</div>
+		</div>
+	</br>
 	<div class="container">
-	<div class="row">
-
-	<div class="col-md-6" style="margin-top:100px" id="joinarea">
-	<button class="btn btn-lg btn btn-primary" id="button1" style="margin-right:7px">Create New Game</button>
-	<button class="btn btn-lg btn btn-primary" id="button2">Join Available Games</button>
-	<div id="availablegameinfo">
-
-		<h4 style="text-align:center"><strong>Available Games:</strong></h4>
-		<ul class="list-group" id="available"></ul>
-
+			<div class="row" style="margin:0 auto">
+			<div class="col m12 s12 center" id="gamearea">
+				<div id="playerinfo" class="card cyan lighten-1">
+				  <span class="card-title">Players</span>
+				  <p>
+						<ul class="list-group" id="users"></ul>
+					</p>
+				</div>
+				<div class="table-responsive card deep-orange lighten-3">
+				<table class="table table-bordered" style="border:3px solid white">
+				  <tr style="border:3px solid black;">
+				    <td id="spot1" style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				    <td id="spot2" style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				    <td id="spot3" style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				  </tr>
+				  <tr style="border:3px solid black;">
+				    <td id="spot4"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				    <td id="spot5"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				    <td id="spot6"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				  </tr>
+				  <tr style="border:3px solid black;">
+				    <td id="spot7" style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				    <td id="spot8" style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				    <td id="spot9" style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
+				  </tr>
+				</table>
+			</br>
+				<button class="btn btn-warning" id="reset">RESET</button>
+				</div>
+			</div>
+			</div>
+</div>
 	</div>
-	</div>
-	<div class="col-md-6" id="gamearea">
-	<div id="playerinfo">
-
-		<h4 style="text-align:center"><strong>Players:</strong></h4>
-		<ul class="list-group" id="users"></ul>
-
-	</div>
-	<div class="table-responsive"><h3 style="text-align:center;color:white">Tic Tac Toe</h3>
-	<table class="table table-bordered style="border:3px solid black">
-		<tr style="border:3px solid black;">
-			<td id="spot1" style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-			<td id="spot2"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-			<td id="spot3"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-		</tr>
-		<tr style="border:3px solid black;">
-			<td id="spot4"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-			<td id="spot5"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-			<td id="spot6"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-		</tr>
-		<tr style="border:3px solid black;">
-			<td id="spot7"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-			<td id="spot8"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-			<td id="spot9"style="height:70px;border:2px solid black;width:184px;text-align:center;font-size:38px;color:white;"></td>
-		</tr>
-		<button class="btn btn-warning" id="reset">RESET</button>
-	</table>
-
-	</div>
-	</div>
-	<div class="col-md-5">
-	<img src="http://marinatrail.cat/wp-content/uploads/2015/01/logo-tic-tac-toe.png" alt="..." class="img-responsive img-circle">
-	</div>
-	</div>
-	</div>
+	<script src="./js/script.js"></script>
 	</body>
 	</html>
