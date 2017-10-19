@@ -7,6 +7,9 @@ var todoSchema = new mongoose.Schema({
   list:[String],
   length:{type:Number}
 });
+app.use("/css",express.static(__dirname+"/css"))
+app.use("/js",express.static(__dirname+"/js"))
+app.use("/images",express.static(__dirname+"/images"))
 var Tic = mongoose.model('Tic',todoSchema);
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
