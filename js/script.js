@@ -89,12 +89,13 @@ $spot1.click(function(){
 
 });
 socket.on('checked',function(data){
-   document.getElementById(data.area).click(false);
+   
 if(data.counter==0)
 {document.getElementById(data.area).innerHTML="X";}
 else {
   document.getElementById(data.area).innerHTML="O";
 }
+    document.getElementById(data.area).click(false);
 counter=data.counter;moves=data.moves+1;
 if(($spot1.text()=="X"&&$spot2.text()=="X"&&$spot3.text()=="X")||($spot4.text()=="X"&&$spot5.text()=="X"&&$spot6.text()=="X")||($spot7.text()=="X"&&$spot8.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot4.text()=="X"&&$spot7.text()=="X")
 ||($spot2.text()=="X"&&$spot5.text()=="X"&&$spot8.text()=="X")||($spot3.text()=="X"&&$spot6.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot5.text()=="X"&&$spot9.text()=="X")||($spot3.text()=="X"&&$spot5.text()=="X"&&$spot7.text()=="X"))
