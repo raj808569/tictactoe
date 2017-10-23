@@ -84,7 +84,7 @@ $spot1.click(function(){
   else {
     document.getElementById("spot1").innerHTML = "X";counter=counter-1;
   }
-    $spot1.off('click'); //disables click event
+    $spot1.click(false);
   socket.emit('check',{area:"spot1",counter:counter,moves:moves});
 
 });
@@ -145,7 +145,7 @@ $spot2.click(function(){
   else {
     document.getElementById("spot2").innerHTML = "X";counter=counter-1;
   }
-      $spot2.off('click'); //disables click event
+      $spot2.click(false);
   socket.emit('check',{area:"spot2",counter:counter,moves:moves});
   });
 $spot3.click(function(){
@@ -154,7 +154,7 @@ $spot3.click(function(){
   else {
     document.getElementById("spot3").innerHTML = "X";counter=counter-1;
   }
-     $spot3.off('click'); //disables click event
+     $spot3.click(false);
   socket.emit('check',{area:"spot3",counter:counter,moves:moves});
 
 });
@@ -164,7 +164,7 @@ $spot4.click(function(){
   else {
     document.getElementById("spot4").innerHTML = "X";counter=counter-1;
   }
-     $spot4.off('click'); //disables click event
+     $spot4.click(false);
   socket.emit('check',{area:"spot4",counter:counter,moves:moves});
 
 });
@@ -174,7 +174,7 @@ $spot5.click(function(){
   else {
     document.getElementById("spot5").innerHTML = "X";counter=counter-1;
   }
-     $spot5.off('click'); //disables click event
+     $spot5.click(false);
   socket.emit('check',{area:"spot5",counter:counter,moves:moves});
 
 });
@@ -184,7 +184,7 @@ $spot6.click(function(){
   else {
     document.getElementById("spot6").innerHTML = "X";counter=counter-1;
   }
-     $spot6.off('click'); //disables click event
+     $spot6.click(false);
   socket.emit('check',{area:"spot6",counter:counter,moves:moves});
 
 });
@@ -194,7 +194,7 @@ $spot7.click(function(){
   else {
     document.getElementById("spot7").innerHTML = "X";counter=counter-1;
   }
-     $spot7.off('click'); //disables click event
+     $spot7.click(false);
   socket.emit('check',{area:"spot7",counter:counter,moves:moves});
                 });
 $spot8.click(function(){
@@ -203,7 +203,7 @@ $spot8.click(function(){
   else {
     document.getElementById("spot8").innerHTML = "X";counter=counter-1;
   }
-     $spot8.off('click'); //disables click event
+     $spot8.click(false);
   socket.emit('check',{area:"spot8",counter:counter,moves:moves});
                 });
 $spot9.click(function(){
@@ -212,7 +212,7 @@ $spot9.click(function(){
   else {
     document.getElementById("spot9").innerHTML = "X";counter=counter-1;
   }
-     $spot9.off('click'); //disables click event
+     $spot9.click(false);
   socket.emit('check',{area:"spot9",counter:counter,moves:moves});
 
 });
