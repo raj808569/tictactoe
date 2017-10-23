@@ -95,9 +95,9 @@ $spot1.click(function(){
   else {
     document.getElementById("spot1").innerHTML = "X";counter=counter-1;
   }
-   
+   visited1=1;
   socket.emit('check',{area:"spot1",counter:counter,moves:moves,visited:visited1});
-     visited1=1;   
+        
     }
 
 });
@@ -160,9 +160,9 @@ $spot2.click(function(){
   else {
     document.getElementById("spot2").innerHTML = "X";counter=counter-1;
   }
-      
+      visited2=1;  
   socket.emit('check',{area:"spot2",counter:counter,moves:moves,visited:visited2});
-     visited2=1;   
+      
     }
   });
 $spot3.click(function(){
@@ -173,9 +173,9 @@ $spot3.click(function(){
   else {
     document.getElementById("spot3").innerHTML = "X";counter=counter-1;
   }
-   
+     visited3=1; 
   socket.emit('check',{area:"spot3",counter:counter,moves:moves,visited:visited3});
-     visited3=1;   
+     
     }
 
 });
@@ -187,9 +187,9 @@ $spot4.click(function(){
   else {
     document.getElementById("spot4").innerHTML = "X";counter=counter-1;
   }
-     $spot4.click(false);
+     visited4=1;
   socket.emit('check',{area:"spot4",counter:counter,moves:moves,visited:visited4});
-    visited4=1;
+    
     }
 });
 $spot5.click(function(){
@@ -200,9 +200,9 @@ $spot5.click(function(){
   else {
     document.getElementById("spot5").innerHTML = "X";counter=counter-1;
   }
-     $spot5.click(false);
+      visited5=1;
   socket.emit('check',{area:"spot5",counter:counter,moves:moves,visited:visited5});
-    visited5=1;
+   
     }
 });
 $spot6.click(function(){
@@ -213,9 +213,9 @@ $spot6.click(function(){
   else {
     document.getElementById("spot6").innerHTML = "X";counter=counter-1;
   }
-    
+      visited6=1;
   socket.emit('check',{area:"spot6",counter:counter,moves:moves,visited:visited6});
-        visited6=1;
+      
     }
 });
 $spot7.click(function(){
@@ -226,9 +226,9 @@ $spot7.click(function(){
   else {
     document.getElementById("spot7").innerHTML = "X";counter=counter-1;
   }
-   
+       visited7=1;   
   socket.emit('check',{area:"spot7",counter:counter,moves:moves,visited:visited7});
-     visited7=1;   
+ 
     }
                 });
 $spot8.click(function(){
@@ -239,9 +239,9 @@ $spot8.click(function(){
   else {
     document.getElementById("spot8").innerHTML = "X";counter=counter-1;
   }
-    
-  socket.emit('check',{area:"spot8",counter:counter,moves:moves,visited:visited8});
      visited8=1;   
+  socket.emit('check',{area:"spot8",counter:counter,moves:moves,visited:visited8});
+    
     }
                 });
 $spot9.click(function(){
@@ -252,9 +252,9 @@ $spot9.click(function(){
   else {
     document.getElementById("spot9").innerHTML = "X";counter=counter-1;
   }
-    
+    visited9=1; 
   socket.emit('check',{area:"spot9",counter:counter,moves:moves,visited:visited9});
-     visited9=1;   
+       
     }
 
 });
