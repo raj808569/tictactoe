@@ -1,5 +1,14 @@
 var socket = io.connect();
 var $button1 = $('#button1');var counter=0;var moves=0;var gamecount=1;var playersname;
+var visited1=0;
+var visited2=0;
+var visited3=0;
+var visited4=0;
+var visited5=0;
+var visited6=0;
+var visited7=0;
+var visited8=0;
+var visited9=0;
 var $button2 = $('#button2');
 var $available=$('#available');
 var $reset=$('#reset');
@@ -79,17 +88,21 @@ mbox.alert(data[1]+" will make the first move",function(err,result){
 });
 });
 $spot1.click(function(){
+    if(visited1==0)
+    {
   if(counter==0)
   {document.getElementById("spot1").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot1").innerHTML = "X";counter=counter-1;
   }
-    $spot1.click(false);
-  socket.emit('check',{area:"spot1",counter:counter,moves:moves});
+   
+  socket.emit('check',{area:"spot1",counter:counter,moves:moves,visited:visited1});
+     visited1=1;   
+    }
 
 });
 socket.on('checked',function(data){
-   
+   data.visited=1;
 if(data.counter==0)
 {document.getElementById(data.area).innerHTML="X";}
 else {
@@ -140,80 +153,109 @@ socket.on('gotnamelist',function(data){
   playersname=data.list;
 });
 $spot2.click(function(){
+     if(visited2==0)
+    {
   if(counter==0)
   {document.getElementById("spot2").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot2").innerHTML = "X";counter=counter-1;
   }
-      $spot2.click(false);
-  socket.emit('check',{area:"spot2",counter:counter,moves:moves});
+      
+  socket.emit('check',{area:"spot2",counter:counter,moves:moves,visited:visited2});
+     visited2=1;   
+    }
   });
 $spot3.click(function(){
+     if(visited3==0)
+    {
   if(counter==0)
   {document.getElementById("spot3").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot3").innerHTML = "X";counter=counter-1;
   }
-     $spot3.click(false);
-  socket.emit('check',{area:"spot3",counter:counter,moves:moves});
+   
+  socket.emit('check',{area:"spot3",counter:counter,moves:moves,visited:visited3});
+     visited3=1;   
+    }
 
 });
 $spot4.click(function(){
+     if(visited4==0)
+    {
   if(counter==0)
   {document.getElementById("spot4").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot4").innerHTML = "X";counter=counter-1;
   }
      $spot4.click(false);
-  socket.emit('check',{area:"spot4",counter:counter,moves:moves});
-
+  socket.emit('check',{area:"spot4",counter:counter,moves:moves,visited:visited4});
+    visited4=1;
+    }
 });
 $spot5.click(function(){
+     if(visited5==0)
+    {
   if(counter==0)
   {document.getElementById("spot5").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot5").innerHTML = "X";counter=counter-1;
   }
      $spot5.click(false);
-  socket.emit('check',{area:"spot5",counter:counter,moves:moves});
-
+  socket.emit('check',{area:"spot5",counter:counter,moves:moves,visited:visited5});
+    visited5=1;
+    }
 });
 $spot6.click(function(){
+     if(visited6==0)
+    {
   if(counter==0)
   {document.getElementById("spot6").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot6").innerHTML = "X";counter=counter-1;
   }
-     $spot6.click(false);
-  socket.emit('check',{area:"spot6",counter:counter,moves:moves});
-
+    
+  socket.emit('check',{area:"spot6",counter:counter,moves:moves,visited:visited6});
+        visited6=1;
+    }
 });
 $spot7.click(function(){
+     if(visited7==0)
+    {
   if(counter==0)
   {document.getElementById("spot7").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot7").innerHTML = "X";counter=counter-1;
   }
-     $spot7.click(false);
-  socket.emit('check',{area:"spot7",counter:counter,moves:moves});
+   
+  socket.emit('check',{area:"spot7",counter:counter,moves:moves,visited:visited7});
+     visited7=1;   
+    }
                 });
 $spot8.click(function(){
+     if(visited8==0)
+    {
   if(counter==0)
   {document.getElementById("spot8").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot8").innerHTML = "X";counter=counter-1;
   }
-     $spot8.click(false);
-  socket.emit('check',{area:"spot8",counter:counter,moves:moves});
+    
+  socket.emit('check',{area:"spot8",counter:counter,moves:moves,visited:visited8});
+     visited8=1;   
+    }
                 });
 $spot9.click(function(){
+     if(visited9==0)
+    {
   if(counter==0)
   {document.getElementById("spot9").innerHTML ="O";counter=counter+1;}
   else {
     document.getElementById("spot9").innerHTML = "X";counter=counter-1;
   }
-     $spot9.click(false);
-  socket.emit('check',{area:"spot9",counter:counter,moves:moves});
+    
+  socket.emit('check',{area:"spot9",counter:counter,moves:moves,visited:visited9});
+     visited9=1;   
+    }
 
 });
 socket.on('reset',function(data){counter=0;moves=0;gamecount=1;
