@@ -89,7 +89,7 @@ $spot1.click(function(){
 
 });
 socket.on('checked',function(data){
-   document.getElementById(data.area).off('click');
+   document.getElementById(data.area).click(false);
 if(data.counter==0)
 {document.getElementById(data.area).innerHTML="X";}
 else {
