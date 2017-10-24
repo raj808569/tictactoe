@@ -63,7 +63,7 @@ mbox.prompt("enter the id of game you want to enter:",function(result){
     });
 });
 });
-$delete.click(function(e){
+$dele.click(function(e){
     e.preventDefault();
     socket.emit('disconnect',1);
     $gamearea.hide();
