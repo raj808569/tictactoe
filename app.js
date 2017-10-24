@@ -102,13 +102,13 @@ socket.on('join',function(data){
 
 socket.on('dismiss',function(data){
   Tic.update(
-    {id:data},
+    {id:id},
     {$pull :{list:socket.username},$inc:{length:-1}},
     function(err,result){
       if (err) {throw err;}
       if(result.length==0)
       {
-        Tic.remove({id:data},function(err,result){
+        Tic.remove({id:id},function(err,result){
           if (err) throw err;
           else{
             Tic.find({length:1},{id:1,_id:0},function(err,result){
@@ -123,13 +123,13 @@ socket.on('dismiss',function(data){
         });
       }
       else{
-        Tic.findOne({id:data},function(err,result){
+        Tic.findOne({id:id},function(err,result){
             if(err)
             {
               throw err;
             }
             else if(result)
-            io.sockets.in(data).emit('display',result);
+            io.sockets.in(id).emit('display',result);
           });
           Tic.find({length:1},{id:1,_id:0},function(err,result){
               if(err)
@@ -138,7 +138,7 @@ socket.on('dismiss',function(data){
               }
               else if(result){console.log(result);
               io.sockets.emit('available',result);}
-              io.sockets.in(data).emit('reset',data);
+              io.sockets.in(id).emit('reset',id);
             });
 
       }
