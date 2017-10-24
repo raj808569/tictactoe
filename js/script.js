@@ -107,7 +107,7 @@ $spot1.click(function(){
     document.getElementById("spot1").innerHTML = "X";counter=counter-1;
   }
    visited1=1; 
-  socket.emit('check',{area:"spot1",counter:counter,moves:moves,visited:visited1});
+  socket.emit('check',{id:iden,area:"spot1",counter:counter,moves:moves,visited:visited1});
         
     }
 
@@ -173,7 +173,7 @@ $spot2.click(function(){
     document.getElementById("spot2").innerHTML = "X";counter=counter-1;
   }
       visited2=1;  
-  socket.emit('check',{area:"spot2",counter:counter,moves:moves,visited:visited2});
+  socket.emit('check',{id:iden,area:"spot2",counter:counter,moves:moves,visited:visited2});
       
     }
   });
@@ -186,7 +186,7 @@ $spot3.click(function(){
     document.getElementById("spot3").innerHTML = "X";counter=counter-1;
   }
      visited3=1; 
-  socket.emit('check',{area:"spot3",counter:counter,moves:moves,visited:visited3});
+  socket.emit('check',{id:iden,area:"spot3",counter:counter,moves:moves,visited:visited3});
      
     }
 
@@ -200,7 +200,7 @@ $spot4.click(function(){
     document.getElementById("spot4").innerHTML = "X";counter=counter-1;
   }
      visited4=1;
-  socket.emit('check',{area:"spot4",counter:counter,moves:moves,visited:visited4});
+  socket.emit('check',{id:iden,area:"spot4",counter:counter,moves:moves,visited:visited4});
     
     }
 });
@@ -213,7 +213,7 @@ $spot5.click(function(){
     document.getElementById("spot5").innerHTML = "X";counter=counter-1;
   }
       visited5=1;
-  socket.emit('check',{area:"spot5",counter:counter,moves:moves,visited:visited5});
+  socket.emit('check',{id:iden,area:"spot5",counter:counter,moves:moves,visited:visited5});
    
     }
 });
@@ -226,7 +226,7 @@ $spot6.click(function(){
     document.getElementById("spot6").innerHTML = "X";counter=counter-1;
   }
       visited6=1;
-  socket.emit('check',{area:"spot6",counter:counter,moves:moves,visited:visited6});
+  socket.emit('check',{id:iden,area:"spot6",counter:counter,moves:moves,visited:visited6});
       
     }
 });
@@ -239,7 +239,7 @@ $spot7.click(function(){
     document.getElementById("spot7").innerHTML = "X";counter=counter-1;
   }
        visited7=1;   
-  socket.emit('check',{area:"spot7",counter:counter,moves:moves,visited:visited7});
+  socket.emit('check',{id:iden,area:"spot7",counter:counter,moves:moves,visited:visited7});
  
     }
                 });
@@ -252,7 +252,7 @@ $spot8.click(function(){
     document.getElementById("spot8").innerHTML = "X";counter=counter-1;
   }
      visited8=1;   
-  socket.emit('check',{area:"spot8",counter:counter,moves:moves,visited:visited8});
+  socket.emit('check',{id:iden,area:"spot8",counter:counter,moves:moves,visited:visited8});
     
     }
                 });
@@ -265,7 +265,7 @@ $spot9.click(function(){
     document.getElementById("spot9").innerHTML = "X";counter=counter-1;
   }
     visited9=1; 
-  socket.emit('check',{area:"spot9",counter:counter,moves:moves,visited:visited9});
+  socket.emit('check',{id:iden,area:"spot9",counter:counter,moves:moves,visited:visited9});
        
     }
 
