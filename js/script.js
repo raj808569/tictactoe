@@ -128,7 +128,7 @@ if(($spot1.text()=="X"&&$spot2.text()=="X"&&$spot3.text()=="X")||($spot4.text()=
 {
   console.log("chal jaa na yaar");
     moves=0;counter=0;
-  mbox.alert(playersname[(gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
+  mbox.alert(playersname[(data.gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
     if (err) throw err;
   });
 }
@@ -137,7 +137,7 @@ else if(($spot1.text()=="O"&&$spot2.text()=="O"&&$spot3.text()=="O")||($spot4.te
 {
     console.log("chal jaa na yaar");
     moves=0;counter=0;
-    mbox.alert(playersname[gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
+    mbox.alert(playersname[data.gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
       if (err) throw err;
     });
 }
