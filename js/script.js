@@ -1,6 +1,6 @@
 var socket = io.connect();
 var $dele = $('#dele');
-var $button1 = $('#button1');var counter=0;var moves=0;var gamecount=1;var playersname;
+var $button1 = $('#button1');var counter=0;var moves=0;var gamecount=1;var playersname;var iden;
 var visited1=0;
 var visited2=0;
 var visited3=0;
@@ -42,6 +42,7 @@ mbox.prompt("Enter Your name",function(result){
 socket.on('created',function(data){
   $joinarea.hide();
   $gamearea.show();
+    iden=data.id;
   var html1='<p style="color:#263238"><strong>Game id:  '+data.id+'<strong></p>';var list=data.list; var html2='';
   for(i=0;i<list.length;i++)
   {
@@ -63,17 +64,12 @@ mbox.prompt("enter the id of game you want to enter:",function(result){
     });
 });
 });
-$dele.click(function(e){
-    e.preventDefault();
-    socket.emit('disconnect',1);
-    $gamearea.hide();
-    $joinarea.show();
 
-});
 
 socket.on('joined',function(data){
 $joinarea.hide();
 $gamearea.show();
+    iden=data.id;
 var html1='<h4 style="color:white">Game id:  '+data.id+'</h4>';var list=data.list; var html2='';
 for(i=0;i<list.length;i++)
 {
@@ -82,6 +78,14 @@ for(i=0;i<list.length;i++)
 html1+=html2;
 $users.html(html1);
   socket.emit('namelist',gamecount);
+});
+
+$dele.click(function(e){
+    e.preventDefault();
+    socket.emit('disconnect',iden);
+    $gamearea.hide();
+    $joinarea.show();
+
 });
 socket.on('display',function(data){
 var html1='<h4 style="color:white">Game id:  '+data.id+'</h4>';var list=data.list; var html2='';
