@@ -81,6 +81,7 @@ $users.html(html1);
 });
 
 $dele.click(function(e){
+    socket.emit('disconnect',{id:iden});
     location.reload();
 
 });
