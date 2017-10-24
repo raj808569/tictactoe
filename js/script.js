@@ -128,7 +128,7 @@ if(($spot1.text()=="X"&&$spot2.text()=="X"&&$spot3.text()=="X")||($spot4.text()=
 {
   console.log("chal jaa na yaar");
     moves=0;counter=0;
-  mbox.alert(playersname[(data.gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
+  mbox.alert(playersname[(gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
     if (err) throw err;
   });
 }
@@ -137,7 +137,7 @@ else if(($spot1.text()=="O"&&$spot2.text()=="O"&&$spot3.text()=="O")||($spot4.te
 {
     console.log("chal jaa na yaar");
     moves=0;counter=0;
-    mbox.alert(playersname[data.gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
+    mbox.alert(playersname[gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
       if (err) throw err;
     });
 }
@@ -160,9 +160,9 @@ moves=0;counter=0;
 $reset.click(function(e){
 e.preventDefault();
 $spot1.empty();$spot2.empty();$spot3.empty();$spot4.empty();$spot5.empty();$spot6.empty();$spot7.empty();$spot8.empty();$spot9.empty();
-gamecount=gamecount+1;gamecount=gamecount%2;
+data.gamecount=data.gamecount+1;data.gamecount=data.gamecount%2;
     visited1=0;visited2=0;visited3=0;visited4=0;visited5=0;visited6=0;visited7=0;visited8=0;visited9=0;
-mbox.alert(playersname[gamecount]+" will make first move",function(err,result){
+mbox.alert(playersname[data.gamecount]+" will make first move",function(err,result){
   if (err) throw err;
 });
 });
