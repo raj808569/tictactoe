@@ -146,7 +146,7 @@ socket.on('disconnect',function(data){
   );
 });
 socket.on('check',function(data){ console.log(data);
-  io.sockets.in(id).emit('checked',data);
+  io.sockets.in(data.id).emit('checked',data);
 });
 socket.on('draw',function(data){
   io.sockets.in(id).emit('newgame1',data);
