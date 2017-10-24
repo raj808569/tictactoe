@@ -9,6 +9,7 @@ var visited6=0;
 var visited7=0;
 var visited8=0;
 var visited9=0;
+var ismoved=0;
 var $button2 = $('#button2');
 var $available=$('#available');
 var $reset=$('#reset');
@@ -95,14 +96,14 @@ $spot1.click(function(){
   else {
     document.getElementById("spot1").innerHTML = "X";counter=counter-1;
   }
-   visited1=1;
+   visited1=1; 
   socket.emit('check',{area:"spot1",counter:counter,moves:moves,visited:visited1});
         
     }
 
 });
 socket.on('checked',function(data){
-   data.visited=1;
+   data.visited=1; 
 if(data.counter==0)
 {document.getElementById(data.area).innerHTML="X";}
 else {
