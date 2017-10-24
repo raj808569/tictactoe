@@ -102,7 +102,7 @@ socket.on('join',function(data){
 
 socket.on('disconnect',function(data){
   Tic.update(
-    {id:id},
+    {id:data},
     {$pull :{list:socket.username},$inc:{length:-1}},
     function(err,result){
       if (err) {throw err;}
