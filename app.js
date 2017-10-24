@@ -101,7 +101,7 @@ socket.on('join',function(data){
 });
 
 socket.on('disconnect',function(data){
-  
+
   Tic.update(
     {id:data.id},
     {$pull :{list:socket.username},$inc:{length:-1}},
@@ -145,13 +145,14 @@ socket.on('disconnect',function(data){
       }
     }
   );
-  io.sockets.disconnect();
-  io.sockets.close();
+  // io.sockets.disconnect();
+  // io.sockets.close();
 });
 socket.on('check',function(data){ console.log(data);
   io.sockets.in(data.id).emit('checked',data);
 });
 socket.on('draw',function(data){
+  console.log(data.id);
   io.sockets.in(data.id).emit('newgame1',data);
 });
 socket.on('namelist',function(data){

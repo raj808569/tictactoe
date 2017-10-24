@@ -82,6 +82,7 @@ $users.html(html1);
 
 $dele.click(function(e){
     socket.emit('disconnect',{id:iden});
+    socket.disconnect();
     location.reload();
 
 });
@@ -107,14 +108,14 @@ $spot1.click(function(){
   else {
     document.getElementById("spot1").innerHTML = "X";counter=counter-1;
   }
-   visited1=1; 
+   visited1=1;
   socket.emit('check',{id:iden,area:"spot1",counter:counter,moves:moves,visited:visited1});
-        
+
     }
 
 });
 socket.on('checked',function(data){
-   data.visited=1; 
+   data.visited=1;
 if(data.counter==0)
 {document.getElementById(data.area).innerHTML="X";}
 else {
@@ -125,6 +126,7 @@ counter=data.counter;moves=data.moves+1;
 if(($spot1.text()=="X"&&$spot2.text()=="X"&&$spot3.text()=="X")||($spot4.text()=="X"&&$spot5.text()=="X"&&$spot6.text()=="X")||($spot7.text()=="X"&&$spot8.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot4.text()=="X"&&$spot7.text()=="X")
 ||($spot2.text()=="X"&&$spot5.text()=="X"&&$spot8.text()=="X")||($spot3.text()=="X"&&$spot6.text()=="X"&&$spot9.text()=="X")||($spot1.text()=="X"&&$spot5.text()=="X"&&$spot9.text()=="X")||($spot3.text()=="X"&&$spot5.text()=="X"&&$spot7.text()=="X"))
 {
+  console.log("chal jaa na yaar");
     moves=0;counter=0;
   mbox.alert(playersname[(gamecount+1)%2]+" won the game!!..Press Reset to start new game",function(err,result){
     if (err) throw err;
@@ -133,6 +135,7 @@ if(($spot1.text()=="X"&&$spot2.text()=="X"&&$spot3.text()=="X")||($spot4.text()=
 else if(($spot1.text()=="O"&&$spot2.text()=="O"&&$spot3.text()=="O")||($spot4.text()=="O"&&$spot5.text()=="O"&&$spot6.text()=="O")||($spot7.text()=="O"&&$spot8.text()=="O"&&$spot9.text()=="O")||($spot1.text()=="O"&&$spot4.text()=="O"&&$spot7.text()=="O")
 ||($spot2.text()=="O"&&$spot5.text()=="O"&&$spot8.text()=="O")||($spot3.text()=="O"&&$spot6.text()=="O"&&$spot9.text()=="O")||($spot1.text()=="O"&&$spot5.text()=="O"&&$spot9.text()=="O")||($spot3.text()=="O"&&$spot5.text()=="O"&&$spot7.text()=="O"))
 {
+    console.log("chal jaa na yaar");
     moves=0;counter=0;
     mbox.alert(playersname[gamecount]+" won the game!!..Press Reset to start new game",function(err,result){
       if (err) throw err;
@@ -140,6 +143,7 @@ else if(($spot1.text()=="O"&&$spot2.text()=="O"&&$spot3.text()=="O")||($spot4.te
 }
 else if(moves==9)
 {
+  console.log("chal jaa na yaar");
   socket.emit('draw',{id:iden,gamecount:gamecount});
   mbox.alert("the game resulted in draw",function(err,result){
     if (err) throw err;
@@ -173,9 +177,9 @@ $spot2.click(function(){
   else {
     document.getElementById("spot2").innerHTML = "X";counter=counter-1;
   }
-      visited2=1;  
+      visited2=1;
   socket.emit('check',{id:iden,area:"spot2",counter:counter,moves:moves,visited:visited2});
-      
+
     }
   });
 $spot3.click(function(){
@@ -186,9 +190,9 @@ $spot3.click(function(){
   else {
     document.getElementById("spot3").innerHTML = "X";counter=counter-1;
   }
-     visited3=1; 
+     visited3=1;
   socket.emit('check',{id:iden,area:"spot3",counter:counter,moves:moves,visited:visited3});
-     
+
     }
 
 });
@@ -202,7 +206,7 @@ $spot4.click(function(){
   }
      visited4=1;
   socket.emit('check',{id:iden,area:"spot4",counter:counter,moves:moves,visited:visited4});
-    
+
     }
 });
 $spot5.click(function(){
@@ -215,7 +219,7 @@ $spot5.click(function(){
   }
       visited5=1;
   socket.emit('check',{id:iden,area:"spot5",counter:counter,moves:moves,visited:visited5});
-   
+
     }
 });
 $spot6.click(function(){
@@ -228,7 +232,7 @@ $spot6.click(function(){
   }
       visited6=1;
   socket.emit('check',{id:iden,area:"spot6",counter:counter,moves:moves,visited:visited6});
-      
+
     }
 });
 $spot7.click(function(){
@@ -239,9 +243,9 @@ $spot7.click(function(){
   else {
     document.getElementById("spot7").innerHTML = "X";counter=counter-1;
   }
-       visited7=1;   
+       visited7=1;
   socket.emit('check',{id:iden,area:"spot7",counter:counter,moves:moves,visited:visited7});
- 
+
     }
                 });
 $spot8.click(function(){
@@ -252,9 +256,9 @@ $spot8.click(function(){
   else {
     document.getElementById("spot8").innerHTML = "X";counter=counter-1;
   }
-     visited8=1;   
+     visited8=1;
   socket.emit('check',{id:iden,area:"spot8",counter:counter,moves:moves,visited:visited8});
-    
+
     }
                 });
 $spot9.click(function(){
@@ -265,9 +269,9 @@ $spot9.click(function(){
   else {
     document.getElementById("spot9").innerHTML = "X";counter=counter-1;
   }
-    visited9=1; 
+    visited9=1;
   socket.emit('check',{id:iden,area:"spot9",counter:counter,moves:moves,visited:visited9});
-       
+
     }
 
 });
