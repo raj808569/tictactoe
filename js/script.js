@@ -139,14 +139,14 @@ else if(($spot1.text()=="O"&&$spot2.text()=="O"&&$spot3.text()=="O")||($spot4.te
 }
 else if(moves==9)
 {
-  socket.emit('draw',gamecount);
+  socket.emit('draw',{id:iden,gamecount:gamecount});
   mbox.alert("the game resulted in draw",function(err,result){
     if (err) throw err;
     mbox.alert("Press Reset to start new game",function(err,result){
       if (err) throw err;
     });
   });
-    socket.emit('namelist',gamecount);
+    socket.emit('namelist',{id:iden,gamecount:gamecount});
 }
 });
 socket.on('newgame1',function(data){
@@ -272,4 +272,5 @@ $spot9.click(function(){
 });
 socket.on('reset',function(data){counter=0;moves=0;gamecount=1;
 $spot1.empty();$spot2.empty();$spot3.empty();$spot4.empty();$spot5.empty();$spot6.empty();$spot7.empty();$spot8.empty();$spot9.empty();
-});
+visited1=0;visited2=0;visited3=0;visited4=0;visited5=0;visited6=0;visited7=0;visited8=0;visited9=0;
+                                });
