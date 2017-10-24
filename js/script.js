@@ -81,10 +81,7 @@ $users.html(html1);
 });
 
 $dele.click(function(e){
-    e.preventDefault();
-    socket.emit('dismiss',iden);
-    $gamearea.hide();
-    $joinarea.show();
+    location.reload();
 
 });
 socket.on('display',function(data){
