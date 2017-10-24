@@ -145,6 +145,7 @@ $reset.click(function(e){
 e.preventDefault();
 $spot1.empty();$spot2.empty();$spot3.empty();$spot4.empty();$spot5.empty();$spot6.empty();$spot7.empty();$spot8.empty();$spot9.empty();
 gamecount=gamecount+1;gamecount=gamecount%2;
+    visited1=0;visited2=0;visited3=0;visited4=0;visited5=0;visited6=0;visited7=0;visited8=0;visited9=0;
 mbox.alert(playersname[gamecount]+" will make first move",function(err,result){
   if (err) throw err;
 });
