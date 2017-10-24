@@ -1,5 +1,5 @@
 var socket = io.connect();
-var $delete = $('#delete');
+var $dele = $('#dele');
 var $button1 = $('#button1');var counter=0;var moves=0;var gamecount=1;var playersname;
 var visited1=0;
 var visited2=0;
