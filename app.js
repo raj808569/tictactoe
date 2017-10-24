@@ -100,7 +100,7 @@ socket.on('join',function(data){
   });
 });
 
-socket.on('disconnect',function(data){
+socket.on('dismiss',function(data){
   Tic.update(
     {id:data},
     {$pull :{list:socket.username},$inc:{length:-1}},
