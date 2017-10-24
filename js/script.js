@@ -1,4 +1,5 @@
 var socket = io.connect();
+var $delete = $('#delete');
 var $button1 = $('#button1');var counter=0;var moves=0;var gamecount=1;var playersname;
 var visited1=0;
 var visited2=0;
@@ -62,6 +63,14 @@ mbox.prompt("enter the id of game you want to enter:",function(result){
     });
 });
 });
+$delete.click(function(e){
+    e.preventDefault();
+    socket.emit('disconnect',1);
+    $gamearea.hide();
+    $joinarea.show();
+
+});
+
 socket.on('joined',function(data){
 $joinarea.hide();
 $gamearea.show();
