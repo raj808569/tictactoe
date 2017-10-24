@@ -101,8 +101,7 @@ socket.on('join',function(data){
 });
 
 socket.on('disconnect',function(data){
-  io.sockets.disconnect();
-  io.sockets.close();
+  
   Tic.update(
     {id:data.id},
     {$pull :{list:socket.username},$inc:{length:-1}},
@@ -146,6 +145,8 @@ socket.on('disconnect',function(data){
       }
     }
   );
+  io.sockets.disconnect();
+  io.sockets.close();
 });
 socket.on('check',function(data){ console.log(data);
   io.sockets.in(data.id).emit('checked',data);
