@@ -101,14 +101,15 @@ socket.on('join',function(data){
 });
 
 socket.on('disconnect',function(data){
+
   Tic.update(
-    {id:id},
+    {id:data.id},
     {$pull :{list:socket.username},$inc:{length:-1}},
     function(err,result){
       if (err) {throw err;}
       if(result.length==0)
       {
-        Tic.remove({id:id},function(err,result){
+        Tic.remove({id:data.id},function(err,result){
           if (err) throw err;
           else{
             Tic.find({length:1},{id:1,_id:0},function(err,result){
@@ -123,13 +124,13 @@ socket.on('disconnect',function(data){
         });
       }
       else{
-        Tic.findOne({id:id},function(err,result){
+        Tic.findOne({id:data.id},function(err,result){
             if(err)
             {
               throw err;
             }
             else if(result)
-            io.sockets.in(id).emit('display',result);
+            io.sockets.in(data.id).emit('display',result);
           });
           Tic.find({length:1},{id:1,_id:0},function(err,result){
               if(err)
@@ -138,27 +139,30 @@ socket.on('disconnect',function(data){
               }
               else if(result){console.log(result);
               io.sockets.emit('available',result);}
-              io.sockets.in(id).emit('reset',id);
+              io.sockets.in(data.id).emit('reset',data.id);
             });
 
       }
     }
   );
+  // io.sockets.disconnect();
+  // io.sockets.close();
 });
 socket.on('check',function(data){ console.log(data);
-  io.sockets.in(id).emit('checked',data);
+  io.sockets.in(data.id).emit('checked',data);
 });
 socket.on('draw',function(data){
-  io.sockets.in(id).emit('newgame1',data);
+  console.log(data.id);
+  io.sockets.in(data.id).emit('newgame1',data);
 });
 socket.on('namelist',function(data){
-  Tic.findOne({id:id},function(err,result){
+  Tic.findOne({id:data.id},function(err,result){
       if(err)
       {
         throw err;
       }
       else if(result)
-      io.sockets.in(id).emit('gotnamelist',result);
+      io.sockets.in(data.id).emit('gotnamelist',result);
     });
 });
 });
