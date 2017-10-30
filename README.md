@@ -1,5 +1,2 @@
-
-# Live demo :http://tictactoes.herokuapp.com/
-
-# Live demo :http://tictactwo.herokuapp.com/
-
+# tictactoe..see live demo at-http://tictactwo.herokuapp.com/
+a two player tictactoe using node,express and mongodb
